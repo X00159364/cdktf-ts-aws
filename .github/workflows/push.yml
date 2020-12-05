@@ -18,7 +18,10 @@ jobs:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
           # github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: install cdk terraform
-        run: npm install --global cdktf-cli
+        run: |
+          npm install --global cdktf-cli
+          npm install
+          cdktf get
       # - name: check
       #   env:
       #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
