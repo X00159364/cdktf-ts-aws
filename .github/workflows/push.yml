@@ -16,7 +16,7 @@ jobs:
         with:
           terraform_version: 0.13.04
       - name: install cdk terraform
-        run: npm install --glabal cdktf-cli@next
+        run: npm install --global cdktf-cli@next
       - name: check
         run: |
           cdktf get
