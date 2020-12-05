@@ -17,7 +17,7 @@ jobs:
           # terraform_version: 0.13.04
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
       - name: install cdk terraform
-        run: npm install --global cdktf-cli@next
+        run: npm install --global cdktf-cli
       - name: check
         run: 
           cdktf get
