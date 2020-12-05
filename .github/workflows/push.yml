@@ -21,7 +21,7 @@ jobs:
         run: |
           npm install --global cdktf-cli
           npm install
-          cdktf get
+          dcdktf get
       # - name: check
       #   env:
       #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
