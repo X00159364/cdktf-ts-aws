@@ -1,34 +1,63 @@
-name: cdktf
-on:
-  push:
-    branches: [main]
+# name: cdktf
+# on:
+#   push:
+#     branches: [main]
 
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - uses: actions/checkout@v2
+#       - uses: actions/setup-node@v2-beta
+#         with:
+#           node-version: "12"
+#       - uses: hashicorp/setup-terraform@v1
+#         with:
+#           # terraform_version: 0.13.04
+#           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+#           # github-token: ${{ secrets.GITHUB_TOKEN }}
+#       - name: install cdk terraform
+#         run: npm install --global cdktf-cli
+#       # - name: check
+#       #   env:
+#       #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#       #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}     
+#       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       #   run: 
+#       #     cdktf get
+#       - name: cdktf get
+#         run: cdktf get
+#     # - name: Deploy 
+#     #   env:
+#     #     GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+#     #   run: "cd cdktf.out && rm -rf .terraform && terraform init && terraform apply -auto-approve"             
+version: 2.1
+orbs:
+  node: circleci/node@4.1.0
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
+  build-and-test:     
+    executor:
+      name: node/default      
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2-beta
-        with:
-          node-version: "12"
-      - uses: hashicorp/setup-terraform@v1
-        with:
-          # terraform_version: 0.13.04
-          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
-          # github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: install cdk terraform
-        run: npm install --global cdktf-cli
-      # - name: check
-      #   env:
-      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}     
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   run: 
-      #     cdktf get
-      - name: cdktf get
-        run: cdktf get
-    # - name: Deploy 
-    #   env:
-    #     GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
-    #   run: "cd cdktf.out && rm -rf .terraform && terraform init && terraform apply -auto-approve"             
+      - checkout
+      - run: |
+          wget https://releases.hashicorp.com/terraform/0.13.4/terraform_0.13.4_linux_amd64.zip
+          unzip terraform_0.13.4_linux_amd64.zip
+          sudo mv terraform /usr/bin
+          sudo chmod a+x /usr/bin/terraform
+      - run:
+          command: sudo npm install -g cdktf-cli cdktf      
+      # - node/install-packages:
+      #     app-dir: cdktf-aws-lambda-helloWorld
+      - run:
+          command: cdktf get
+      #     working_directory: cdktf-aws-lambda-helloWorld      
+      # - run:
+      #     command: npm run test
+      #     working_directory: cdktf-aws-lambda-helloWorld
+         
+workflows:
+    build-and-test:
+      jobs:
+        - build-and-test
