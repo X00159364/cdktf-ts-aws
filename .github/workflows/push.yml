@@ -29,7 +29,9 @@ jobs:
       #   run: 
       #     cdktf get
       - name: cdktf synth
-        run: cdktf synth
+        run: |
+          npm install
+          cdktf synth
     # - name: Deploy 
     #   env:
     #     GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
