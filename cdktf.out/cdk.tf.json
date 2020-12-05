@@ -1,0 +1,479 @@
+{
+  "//": {
+    "metadata": {
+      "version": "0.0.18",
+      "stackName": "cdktf-aws"
+    }
+  },
+  "terraform": {
+    "required_providers": {
+      "aws": {
+        "version": "~> 2.0",
+        "source": "aws"
+      }
+    }
+  },
+  "provider": {
+    "aws": [
+      {
+        "region": "eu-west-1"
+      }
+    ]
+  },
+  "resource": {
+    "aws_iam_role": {
+      "cdktf_basic_lambda_role": {
+        "assume_role_policy": "{ \"Version\": \"2012-10-17\", \"Statement\": [ {\n       \"Action\": \"sts:AssumeRole\", \"Principal\": { \"Service\": \"lambda.amazonaws.com\" }, \"Effect\": \"Allow\", \"Sid\": \"\" } ] }",
+        "description": "Basic Lambda Execution Role",
+        "//": {
+          "metadata": {
+            "path": "cdktf-aws/cdktf_basic_lambda_role",
+            "uniqueId": "cdktf_basic_lambda_role",
+            "stackTrace": [
+              "new TerraformElement (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-element.js:19:28)",
+              "new TerraformResource (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-resource.js:15:9)",
+              "new IamRole (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\.gen\\providers\\aws\\iam-role.js:13:9)",
+              "new CdktfStack (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:13:22)",
+              "Object.<anonymous> (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:173:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        }
+      }
+    },
+    "aws_lambda_function": {
+      "cdktf_lambda": {
+        "description": "A simple Hello world Lambda Function",
+        "filename": "../insert.zip",
+        "function_name": "insert",
+        "handler": "insert.lambda_handler",
+        "role": "${aws_iam_role.cdktf_basic_lambda_role.arn}",
+        "runtime": "python3.7",
+        "timeout": 60,
+        "//": {
+          "metadata": {
+            "path": "cdktf-aws/cdktf_lambda",
+            "uniqueId": "cdktf_lambda",
+            "stackTrace": [
+              "new TerraformElement (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-element.js:19:28)",
+              "new TerraformResource (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-resource.js:15:9)",
+              "new LambdaFunction (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\.gen\\providers\\aws\\lambda-function.js:13:9)",
+              "new CdktfStack (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:18:20)",
+              "Object.<anonymous> (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:173:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        }
+      },
+      "cdktf_insert_lambda": {
+        "description": "A simple Hello world Lambda Function",
+        "filename": "../insert.zip",
+        "function_name": "cdktf_insert_lambda",
+        "handler": "insert.lambda_handler",
+        "role": "${aws_iam_role.cdktf_basic_lambda_role.arn}",
+        "runtime": "python3.7",
+        "timeout": 60,
+        "//": {
+          "metadata": {
+            "path": "cdktf-aws/cdktf_insert_lambda",
+            "uniqueId": "cdktf_insert_lambda",
+            "stackTrace": [
+              "new TerraformElement (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-element.js:19:28)",
+              "new TerraformResource (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-resource.js:15:9)",
+              "new LambdaFunction (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\.gen\\providers\\aws\\lambda-function.js:13:9)",
+              "new CdktfStack (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:95:24)",
+              "Object.<anonymous> (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:173:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        }
+      }
+    },
+    "aws_api_gateway_rest_api": {
+      "cdktf-api-gateway": {
+        "name": "cdktf-rest-api",
+        "//": {
+          "metadata": {
+            "path": "cdktf-aws/cdktf-api-gateway",
+            "uniqueId": "cdktf-api-gateway",
+            "stackTrace": [
+              "new TerraformElement (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-element.js:19:28)",
+              "new TerraformResource (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-resource.js:15:9)",
+              "new ApiGatewayRestApi (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\.gen\\providers\\aws\\api-gateway-rest-api.js:13:9)",
+              "new CdktfStack (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:27:21)",
+              "Object.<anonymous> (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:173:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        }
+      }
+    },
+    "aws_api_gateway_resource": {
+      "cdktf-api-gateway-resource": {
+        "parent_id": "${aws_api_gateway_rest_api.cdktf-api-gateway.root_resource_id}",
+        "path_part": "insert",
+        "rest_api_id": "${aws_api_gateway_rest_api.cdktf-api-gateway.id}",
+        "//": {
+          "metadata": {
+            "path": "cdktf-aws/cdktf-api-gateway-resource",
+            "uniqueId": "cdktf-api-gateway-resource",
+            "stackTrace": [
+              "new TerraformElement (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-element.js:19:28)",
+              "new TerraformResource (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-resource.js:15:9)",
+              "new ApiGatewayResource (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\.gen\\providers\\aws\\api-gateway-resource.js:13:9)",
+              "new CdktfStack (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:30:26)",
+              "Object.<anonymous> (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:173:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        }
+      }
+    },
+    "aws_api_gateway_method": {
+      "api-gateway-method": {
+        "authorization": "NONE",
+        "http_method": "GET",
+        "resource_id": "${aws_api_gateway_resource.cdktf-api-gateway-resource.id}",
+        "rest_api_id": "${aws_api_gateway_rest_api.cdktf-api-gateway.id}",
+        "//": {
+          "metadata": {
+            "path": "cdktf-aws/api-gateway-method",
+            "uniqueId": "api-gateway-method",
+            "stackTrace": [
+              "new TerraformElement (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-element.js:19:28)",
+              "new TerraformResource (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-resource.js:15:9)",
+              "new ApiGatewayMethod (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\.gen\\providers\\aws\\api-gateway-method.js:13:9)",
+              "new CdktfStack (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:35:28)",
+              "Object.<anonymous> (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:173:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        }
+      },
+      "post-api-gateway-method": {
+        "authorization": "NONE",
+        "http_method": "POST",
+        "resource_id": "${aws_api_gateway_resource.cdktf-api-gateway-resource.id}",
+        "rest_api_id": "${aws_api_gateway_rest_api.cdktf-api-gateway.id}",
+        "//": {
+          "metadata": {
+            "path": "cdktf-aws/post-api-gateway-method",
+            "uniqueId": "post-api-gateway-method",
+            "stackTrace": [
+              "new TerraformElement (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-element.js:19:28)",
+              "new TerraformResource (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-resource.js:15:9)",
+              "new ApiGatewayMethod (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\.gen\\providers\\aws\\api-gateway-method.js:13:9)",
+              "new CdktfStack (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:41:29)",
+              "Object.<anonymous> (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:173:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        }
+      }
+    },
+    "aws_api_gateway_integration": {
+      "api-gateway-integration": {
+        "http_method": "${aws_api_gateway_method.api-gateway-method.http_method}",
+        "integration_http_method": "POST",
+        "resource_id": "${aws_api_gateway_resource.cdktf-api-gateway-resource.id}",
+        "rest_api_id": "${aws_api_gateway_rest_api.cdktf-api-gateway.id}",
+        "type": "AWS_PROXY",
+        "uri": "${aws_lambda_function.cdktf_lambda.invoke_arn}",
+        "depends_on": [
+          "aws_api_gateway_method.api-gateway-method"
+        ],
+        "//": {
+          "metadata": {
+            "path": "cdktf-aws/api-gateway-integration",
+            "uniqueId": "api-gateway-integration",
+            "stackTrace": [
+              "new TerraformElement (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-element.js:19:28)",
+              "new TerraformResource (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-resource.js:15:9)",
+              "new ApiGatewayIntegration (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\.gen\\providers\\aws\\api-gateway-integration.js:13:9)",
+              "new CdktfStack (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:47:29)",
+              "Object.<anonymous> (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:173:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        }
+      },
+      "post-api-gateway-integration": {
+        "http_method": "${aws_api_gateway_method.post-api-gateway-method.http_method}",
+        "integration_http_method": "POST",
+        "resource_id": "${aws_api_gateway_resource.cdktf-api-gateway-resource.id}",
+        "rest_api_id": "${aws_api_gateway_rest_api.cdktf-api-gateway.id}",
+        "type": "AWS",
+        "uri": "${aws_lambda_function.cdktf_insert_lambda.invoke_arn}",
+        "depends_on": [
+          "aws_api_gateway_method.post-api-gateway-method"
+        ],
+        "//": {
+          "metadata": {
+            "path": "cdktf-aws/post-api-gateway-integration",
+            "uniqueId": "post-api-gateway-integration",
+            "stackTrace": [
+              "new TerraformElement (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-element.js:19:28)",
+              "new TerraformResource (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-resource.js:15:9)",
+              "new ApiGatewayIntegration (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\.gen\\providers\\aws\\api-gateway-integration.js:13:9)",
+              "new CdktfStack (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:118:34)",
+              "Object.<anonymous> (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:173:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        }
+      }
+    },
+    "aws_dynamodb_table": {
+      "cdktf-dynamodb": {
+        "billing_mode": "PROVISIONED",
+        "hash_key": "ID",
+        "name": "cdktf-dynamodb",
+        "range_key": "LatestGreetingTime",
+        "read_capacity": 20,
+        "write_capacity": 20,
+        "attribute": [
+          {
+            "name": "ID",
+            "type": "S"
+          },
+          {
+            "name": "LatestGreetingTime",
+            "type": "S"
+          }
+        ],
+        "//": {
+          "metadata": {
+            "path": "cdktf-aws/cdktf-dynamodb",
+            "uniqueId": "cdktf-dynamodb",
+            "stackTrace": [
+              "new TerraformElement (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-element.js:19:28)",
+              "new TerraformResource (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-resource.js:15:9)",
+              "new DynamodbTable (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\.gen\\providers\\aws\\dynamodb-table.js:13:9)",
+              "new CdktfStack (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:58:23)",
+              "Object.<anonymous> (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:173:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        }
+      }
+    },
+    "aws_iam_policy": {
+      "cdktf_dynamodbPolicy": {
+        "description": "IAM policy for dynamoDB",
+        "name": "cdktf_dynamodbPolicy",
+        "path": "/",
+        "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"dynamodb:PutItem\",\"dynamodb:DeleteItem\",\"dynamodb:GetItem\",\"dynamodb:Scan\",\"dynamodb:Query\",\"dynamodb:UpdateItem\"],\"Resource\":\"arn:aws:dynamodb:eu-west-1:592715633892:*\",\"Effect\":\"Allow\"}]}",
+        "//": {
+          "metadata": {
+            "path": "cdktf-aws/cdktf_dynamodbPolicy",
+            "uniqueId": "cdktf_dynamodbPolicy",
+            "stackTrace": [
+              "new TerraformElement (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-element.js:19:28)",
+              "new TerraformResource (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-resource.js:15:9)",
+              "new IamPolicy (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\.gen\\providers\\aws\\iam-policy.js:13:9)",
+              "new CdktfStack (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:70:32)",
+              "Object.<anonymous> (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:173:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        }
+      }
+    },
+    "aws_iam_role_policy_attachment": {
+      "lambdaLogs": {
+        "policy_arn": "${aws_iam_policy.cdktf_dynamodbPolicy.arn}",
+        "role": "${aws_iam_role.cdktf_basic_lambda_role.name}",
+        "//": {
+          "metadata": {
+            "path": "cdktf-aws/lambdaLogs",
+            "uniqueId": "lambdaLogs",
+            "stackTrace": [
+              "new TerraformElement (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-element.js:19:28)",
+              "new TerraformResource (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-resource.js:15:9)",
+              "new IamRolePolicyAttachment (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\.gen\\providers\\aws\\iam-role-policy-attachment.js:13:9)",
+              "new CdktfStack (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:90:9)",
+              "Object.<anonymous> (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:173:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        }
+      }
+    },
+    "aws_lambda_permission": {
+      "apigw-lambda-permission": {
+        "action": "lambda:InvokeFunction",
+        "function_name": "${aws_lambda_function.cdktf_insert_lambda.function_name}",
+        "principal": "apigateway.amazonaws.com",
+        "source_arn": "arn:aws:execute-api:${data.aws_region.region.name}:${data.aws_caller_identity.userId.account_id}:${aws_api_gateway_rest_api.cdktf-api-gateway.id}/*/${aws_api_gateway_method.post-api-gateway-method.http_method}${aws_api_gateway_resource.cdktf-api-gateway-resource.path}",
+        "//": {
+          "metadata": {
+            "path": "cdktf-aws/apigw-lambda-permission",
+            "uniqueId": "apigw-lambda-permission",
+            "stackTrace": [
+              "new TerraformElement (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-element.js:19:28)",
+              "new TerraformResource (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-resource.js:15:9)",
+              "new LambdaPermission (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\.gen\\providers\\aws\\lambda-permission.js:13:9)",
+              "new CdktfStack (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:104:9)",
+              "Object.<anonymous> (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:173:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        }
+      }
+    },
+    "aws_api_gateway_deployment": {
+      "api-gateway-deployment": {
+        "description": "Dev Environment",
+        "rest_api_id": "${aws_api_gateway_rest_api.cdktf-api-gateway.id}",
+        "stage_description": "Dev Environment",
+        "stage_name": "dev",
+        "depends_on": [
+          "aws_api_gateway_method.api-gateway-method",
+          "aws_api_gateway_method.post-api-gateway-method",
+          "aws_api_gateway_integration.api-gateway-integration",
+          "aws_api_gateway_integration.post-api-gateway-integration"
+        ],
+        "//": {
+          "metadata": {
+            "path": "cdktf-aws/api-gateway-deployment",
+            "uniqueId": "api-gateway-deployment",
+            "stackTrace": [
+              "new TerraformElement (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-element.js:19:28)",
+              "new TerraformResource (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-resource.js:15:9)",
+              "new ApiGatewayDeployment (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\.gen\\providers\\aws\\api-gateway-deployment.js:13:9)",
+              "new CdktfStack (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:127:28)",
+              "Object.<anonymous> (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:173:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "data": {
+    "aws_region": {
+      "region": {
+        "//": {
+          "metadata": {
+            "path": "cdktf-aws/region",
+            "uniqueId": "region",
+            "stackTrace": [
+              "new TerraformElement (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-element.js:19:28)",
+              "new TerraformDataSource (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-data-source.js:15:9)",
+              "new DataAwsRegion (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\.gen\\providers\\aws\\data-aws-region.js:13:9)",
+              "new CdktfStack (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:56:24)",
+              "Object.<anonymous> (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:173:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        }
+      }
+    },
+    "aws_caller_identity": {
+      "userId": {
+        "//": {
+          "metadata": {
+            "path": "cdktf-aws/userId",
+            "uniqueId": "userId",
+            "stackTrace": [
+              "new TerraformElement (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-element.js:19:28)",
+              "new TerraformDataSource (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\node_modules\\cdktf\\lib\\terraform-data-source.js:15:9)",
+              "new DataAwsCallerIdentity (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\.gen\\providers\\aws\\data-aws-caller-identity.js:13:9)",
+              "new CdktfStack (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:57:24)",
+              "Object.<anonymous> (C:\\X00159364\\Terraform_CDK\\cdktf-ts-aws\\main.js:173:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "output": {
+    "endpoint": {
+      "value": "${aws_api_gateway_deployment.api-gateway-deployment.invoke_url}"
+    },
+    "db": {
+      "value": "${aws_dynamodb_table.cdktf-dynamodb.arn}"
+    }
+  }
+}
