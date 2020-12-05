@@ -27,8 +27,8 @@ jobs:
       #   run: 
       #     cdktf get
       - name: cdktf get
-        run: cdktf deploy -auto-approve   
-    # - name: Deploy
+        run: cdktf get
+    # - name: Deploy 
     #   env:
     #     GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
     #   run: "cd cdktf.out && rm -rf .terraform && terraform init && terraform apply -auto-approve"             
