@@ -26,8 +26,8 @@ jobs:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       #   run: 
       #     cdktf get
-      - name: cdktf synth
-        run: cdktf synth
+      - name: cdktf get
+        run: cdktf get
     # - name: Deploy 
     #   env:
     #     GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
