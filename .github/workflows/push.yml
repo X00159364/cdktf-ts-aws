@@ -13,10 +13,10 @@ jobs:
         with:
           node-version: "12"
       - uses: hashicorp/setup-terraform@v1
-        # with:
-        #   # terraform_version: 0.13.04
-        #   cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
-        #   github-token: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          # terraform_version: 0.13.04
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+          # github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: install cdk terraform
         run: npm install --global cdktf-cli
       # - name: check
@@ -27,4 +27,8 @@ jobs:
       #   run: 
       #     cdktf get
       - name: cdktf get
-        run: cdktf get        
+        run: cdktf deploy -auto-approve   
+    # - name: Deploy
+    #   env:
+    #     GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+    #   run: "cd cdktf.out && rm -rf .terraform && terraform init && terraform apply -auto-approve"             
