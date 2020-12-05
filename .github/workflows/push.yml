@@ -33,6 +33,10 @@
 #     #     GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
 #     #   run: "cd cdktf.out && rm -rf .terraform && terraform init && terraform apply -auto-approve"             
 version: 2.1
+name: cdktf
+on:
+  push:
+    branches: [main]
 orbs:
   node: circleci/node@4.1.0
 jobs:
