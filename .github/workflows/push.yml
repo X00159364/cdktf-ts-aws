@@ -38,8 +38,6 @@ name: cdktf
 on:
   push:
     branches: [main]
-orbs:
-  node: circleci/node@4.1.0
 jobs:
   build-and-test:     
     executor:
