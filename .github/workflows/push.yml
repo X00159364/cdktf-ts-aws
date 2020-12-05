@@ -26,5 +26,5 @@ jobs:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       #   run: 
       #     cdktf get
-      - run:
-          command: cdktf get        
+      - name: cdktf get
+        run: cdktf get        
