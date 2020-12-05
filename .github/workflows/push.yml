@@ -20,8 +20,8 @@ jobs:
       - name: install cdk terraform
         run: |
           npm install --global cdktf-cli
-          npm install
-          dcdktf get
+          export CDKTF_LOG_LEVEL=DEBUG
+          cdktf get
       # - name: check
       #   env:
       #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
